@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <errno.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
 
 int main() {
-    srand(time(NULL));
     int r[10];
-    printf("Generating random numbers: \n");
-    for (int i = 0; i<10; i++) {
-        r[i] = rand();
-        printf("\tr[%d]: %d\n",i,r[i]);
-    }
-
-
+    int * p = r;
+    open("dev/random",O_RDONLY,0);
+    read("dev/random",r[0],8);
+    printf("%d\n",r[0]);
+    close("dev/random");
 
     return 0;
 }
