@@ -7,17 +7,11 @@
 #include <string.h>
 
 int randomNum() {
-    int file = open("/dev/random",O_RDONLY);
-    unsigned char buffer[sizeof(int)];
-
+    int file = open("/dev/urandom",O_RDONLY);
+    int * buffer = malloc(sizeof(int));
     read(file,buffer,sizeof(int));
-
-    // if (file = errno) {
-    //         printf(strerror(file));
-    //         printf("\n");
-    //     }
     close(file);
-    return buffer;
+    return *buffer;
 }
 
 int main() {
@@ -25,10 +19,10 @@ int main() {
     printf("testing randomNum: %d\n", randomNum());
     printf("Generating random numbers:\n");
     int i;
-    // for (i = 0; i < 10; i++) {
-    //     r[i] = randomNum();
-    //     printf("\tr[%d]: %d\n",i,r[i]);
-    // }
+    for (i = 0; i < 10; i++) {
+        r[i] = randomNum();
+        printf("\tr[%d]: %d\n",i,r[i]);
+    }
     // r[0] = randomNum();
     // printf("\tr[%d]: %d\n",0,r[0]);
     // r[1] = randomNum();
