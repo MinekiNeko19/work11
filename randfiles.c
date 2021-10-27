@@ -8,24 +8,16 @@
 
 int randomNum() {
     int file = open("/dev/random",O_RDONLY);
+    unsigned char buffer[sizeof(int)];
+
+    read(file,buffer,sizeof(int));
 
     // if (file = errno) {
     //         printf(strerror(file));
     //         printf("\n");
     //     }
-
-    int scanned;
-    int buffer[10];
-    // while (scanned < sizeof(int)) {
-        scanned = read(file,buffer,sizeof(int));
-        printf("%d\n",buffer[scanned]);
-        if (scanned = errno) {
-            printf(strerror(scanned));
-            printf("\n");
-        // }
-    }
     close(file);
-    return scanned;
+    return buffer;
 }
 
 int main() {
