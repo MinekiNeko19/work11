@@ -31,8 +31,8 @@ int main() {
 
     printf("reading numbers from file\n");
     int new[10];
-    store = open("store.txt", O_RDONLY);
-    read(store,new,10*sizeof(int));
+    int temp = open("store.txt", O_RDONLY);
+    read(temp,new,10*sizeof(int));
     for(i = 0; i<10;i++) {
         printf("\tr[%d]: %d\n",i,r[i]);
     }
