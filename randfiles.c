@@ -7,9 +7,23 @@
 #include <string.h>
 
 int randomNum() {
-    int file = open("dev/random",O_RDONLY,0);
-    int * num;
-    int scanned = read(file,num,sizeof(int));
+    int file = open("/dev/random",O_RDONLY);
+
+    // if (file = errno) {
+    //         printf(strerror(file));
+    //         printf("\n");
+    //     }
+
+    int scanned;
+    int buffer[10];
+    // while (scanned < sizeof(int)) {
+        scanned = read(file,buffer,sizeof(int));
+        printf("%d\n",buffer[scanned]);
+        if (scanned = errno) {
+            printf(strerror(scanned));
+            printf("\n");
+        // }
+    }
     close(file);
     return scanned;
 }
@@ -19,10 +33,10 @@ int main() {
     printf("testing randomNum: %d\n", randomNum());
     printf("Generating random numbers:\n");
     int i;
-    for (i = 0; i < 10; i++) {
-        r[i] = randomNum();
-        printf("\tr[%d]: %d\n",i,r[i]);
-    }
+    // for (i = 0; i < 10; i++) {
+    //     r[i] = randomNum();
+    //     printf("\tr[%d]: %d\n",i,r[i]);
+    // }
     // r[0] = randomNum();
     // printf("\tr[%d]: %d\n",0,r[0]);
     // r[1] = randomNum();
