@@ -9,22 +9,41 @@
 int randomNum() {
     int file = open("dev/random",O_RDONLY,0);
     int * num;
-    read(file,num,sizeof(int));
+    int scanned = read(file,num,sizeof(int));
     close(file);
-    return *num;
+    return scanned;
 }
 
 int main() {
     int r[10];
     printf("testing randomNum: %d\n", randomNum());
-    // open(dev/random,O_RDONLY,0);
-    // printf("Generating random numbers:\n");
-    // for (int i = 0; i < 10; i++) {
-    //     read(dev/random,r[i],8);
-    //     printf("\tr[%d]: %d\n",i,r[i]);
-    // }
-    // printf("%d\n",r[0]);
-    // close(dev/random);
+    printf("Generating random numbers:\n");
+    int i;
+    for (i = 0; i < 10; i++) {
+        r[i] = randomNum();
+        printf("\tr[%d]: %d\n",i,r[i]);
+    }
+    // r[0] = randomNum();
+    // printf("\tr[%d]: %d\n",0,r[0]);
+    // r[1] = randomNum();
+    // printf("\tr[%d]: %d\n",1,r[1]);
+    // r[2] = randomNum();
+    // printf("\tr[%d]: %d\n",2,r[2]);
+    // r[3] = randomNum();
+    // printf("\tr[%d]: %d\n",3,r[3]);
+    // r[4] = randomNum();
+    // printf("\tr[%d]: %d\n",4,r[4]);
+    // r[5] = randomNum();
+    // printf("\tr[%d]: %d\n",5,r[5]);
+    // r[6] = randomNum();
+    // printf("\tr[%d]: %d\n",6,r[6]);
+    // r[7] = randomNum();
+    // printf("\tr[%d]: %d\n",7,r[7]);
+    // r[8] = randomNum();
+    // printf("\tr[%d]: %d\n",8,r[8]);
+    // r[9] = randomNum();
+    // printf("\tr[%d]: %d\n",9,r[9]);
+    
 
     return 0;
 }
