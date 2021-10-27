@@ -36,7 +36,7 @@ int main() {
     for(i = 0; i<10;i++) {
         printf("\tr[%d]: %d\n",i,r[i]);
     }
-    close(store);
+    close(temp);
 
     return 0;
 }
