@@ -27,12 +27,16 @@ int main() {
     printf("writing numbers into file\n");
     int store = open("store.txt",O_WRONLY | O_APPEND | O_CREAT, 0644);
     write(store,r,10*sizeof(int));
+    close (store);
 
     printf("reading numbers from file\n");
     int new[10];
-
-
-    close (store);
+    store = open("store.txt", O_RDONLY);
+    read(store,new,10*sizeof(int));
+    for(i = 0; i<10;i++) {
+        printf("\tr[%d]: %d\n",i,r[i]);
+    }
+    close(store);
 
     return 0;
 }
